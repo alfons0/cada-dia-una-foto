@@ -1,26 +1,104 @@
 @import "tailwindcss";
 
+@theme {
+  --color-rose-soft: #ffd6e8;
+  --color-rose-cloud: #fff5f9;
+  --color-rose-deep: #ff77a8;
+  --color-rose-bow: #ff4b8b;
+  --color-lavender: #c9a7e8;
+  --color-lavender-soft: #e5d4f5;
+  --color-peach: #ffe5b4;
+  --color-plum: #5c3a52;
+  --color-plum-soft: #8a6280;
+  --color-cream: #fff9f0;
+
+  --font-display: var(--font-mochiy);
+  --font-body: var(--font-fredoka);
+
+  --shadow-kawaii: 0 8px 30px -8px rgba(255, 119, 168, 0.45);
+  --shadow-kawaii-lg: 0 20px 50px -12px rgba(255, 75, 139, 0.35);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  background: #fff5f9;
+  color: #5c3a52;
+  font-family: var(--font-body), system-ui, sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(255, 214, 232, 0.65) 0%, transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(201, 167, 232, 0.45) 0%, transparent 45%),
+    radial-gradient(circle at 50% 100%, rgba(255, 229, 180, 0.4) 0%, transparent 50%);
+  background-attachment: fixed;
+  min-height: 100dvh;
 }
+
+@keyframes sparkle-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.4; }
+  50% { transform: translateY(-12px) rotate(15deg); opacity: 1; }
+}
+
+@keyframes bow-wiggle {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+
+@keyframes gentle-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes counter-spin {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes heart-beat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.animate-spin-slow { animation: spin-slow 4s linear infinite; }
+.animate-counter-spin { animation: counter-spin 4s linear infinite; }
+.animate-heart-beat { animation: heart-beat 1.2s ease-in-out infinite; }
+
+.animate-sparkle { animation: sparkle-float 3.5s ease-in-out infinite; }
+.animate-bob { animation: gentle-bob 4s ease-in-out infinite; }
+.animate-wiggle { animation: bow-wiggle 5s ease-in-out infinite; transform-origin: center; }
+.animate-fade-up { animation: fade-in-up 0.8s ease-out both; }
+
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    #ff77a8 0%,
+    #c9a7e8 50%,
+    #ff77a8 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+.font-display { font-family: var(--font-mochiy), system-ui, sans-serif; }
+.font-body { font-family: var(--font-fredoka), system-ui, sans-serif; }
